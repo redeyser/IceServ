@@ -1,0 +1,79 @@
+<form  method='POST' action='/kassa'>
+    <input name="id" id="id" type="hidden" value="%id%"/>
+    <table class="marg small">
+        <tbody>
+        <tr>
+            <input name="idreg" id="idreg" type="hidden" value="%idreg%"/>
+            <td class="vcenter ice">Reg[%idreg%]:[%id%]</td><td></td>
+            <td class="vcenter ice">Name:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="name" id="name" value='%name%' type="text" size=8/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">ID PLACE:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="idplace" id="idplace" value='%idplace%' type="text" size=4/>
+            </td>
+            <td class="vcenter ice norm">NKASSA:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="nkassa" id="nkassa" value='%nkassa%' type="text" size=4/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">password:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="password" id="password" value='' type="password" size=5/>
+            </td>
+            <td class="vcenter ice">VPN IP:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="ip" id="ip" value='%ip%' type="text" size=8/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter black">Nickname</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="nickname" id="nickname" value='%nickname%' type="text" size=8/>
+            </td>
+            <td class="vcenter black">IDPRICE</td>
+            <td>
+            <select class="itext black small" name="idprice">
+                %select_price%
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td><td></td>
+            <td class="vcenter black">OFF</td>
+            <td>
+            <select class="itext black small" name="off">
+                <option value="0" %off_0%>Нет</option>
+                <option value="1" %off_1%>Да</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">date:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="date" id="date" value='%date%' type="text" size=8/>
+            </td>
+            <td class="vcenter ice norm">time:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="time" id="time" value='%time%' type="text" size=8/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <button class="but norm" name="cancel" value="cancel" onclick="ed_x.hidden=true;return false;" >Cancel</button>
+            </td>
+            <td>
+                <button class="but norm" name="delete" value="delete" onclick="return confirm('Удалить?');" >Delete</button>
+            </td>
+            <td>
+                <button class="but norm" name="save" value="save" onclick="return confirm('Сохранить?');" >Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+

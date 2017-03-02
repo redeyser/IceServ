@@ -1,0 +1,37 @@
+<table>
+<tr>
+<td>
+<div class="window padd marg">
+    <span class='flame big'>%n%</span>
+    <table>
+        <tr class="black norm sel" onclick='edit_x("%n%",0);'><td>Add</td></tr>
+        <tr class="ice bold norm sel" onclick='_relocate("/");'><td>Exit</td></tr>
+    </table>
+
+</div>
+</td>
+<td>
+<div class="window wall">
+    <table class="tb ice smallest">
+        <tbody>
+        <tr>
+        <!--<th>#</th><th>RegId</th><th>Name</th>-->
+        </tr>
+        %%#table# onclick='edit_x("%n%",%id%);'%%
+        %table%
+        </tbody>
+    </table>
+    <div    id="ed_x" class="windowinfo wcenter w80" 
+            style="overflow:hidden;" 
+            hidden >
+    </div>
+    <div    id="ed_sub" class="windowinfo wcenter h80 scroll" 
+            hidden >
+            <div id="tb_content" >
+            </div>
+    </div>
+
+</div>
+</td>
+</tr>
+</table>

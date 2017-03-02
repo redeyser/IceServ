@@ -1,0 +1,92 @@
+<div class="window w33 padd marg">
+    <span class='flame big'>Service</span>
+    <table class="norm">
+        <tr class="ice sel" onclick='showfiles();'><td>Files</td></tr>
+        <tr class="ice bold sel" onclick='_relocate("/");'><td>Exit</td></tr>
+    </table>
+
+</div>
+
+<div id="fs" class="windowinfo center wmaxcenter w90 h90 norm" hidden>
+    <div id="fscont" class="norm" >  </div>
+    <div class='small black ltext marg'>
+        <form name='load' method='POST' enctype="multipart/form-data" action='/service'/>
+        <input class="itext small ice" name="file" id=file type="file" hidden onchange='putf();'/>
+        </form>
+    </div>
+    <button class='norm marg but' name='put_file' onclick='selfile();' >Upload</button>
+    <button id="btn" class='but norm marg rtext' onclick='fs.hidden=true;fscont.innerHTML="";'>Close</button>
+</div>
+
+<script>
+    cur_path="";
+    function selfile(){
+       document.getElementById("file").click();
+    }
+    function putf(){
+        r=_putfile("/files/"+cur_path);
+        if (r=="0"){
+            alert_message("Ошибка","Ошибка записи или архивации файла");
+        }
+        showfiles();
+       
+    }
+
+
+    function showfiles(){
+        lsfiles();
+    }
+    function _chdir(n){
+        cur_path=n;
+        showfiles();
+    }
+    function _getfile(n){
+        _relocate("/files/"+n);
+        showfiles();
+    }
+    function _del(n){
+        r=_getdata("/fo/rm?path="+n);
+        showfiles();
+    }
+
+    function lsfiles(){
+        r=_getdata("/fo/ls?json=1&path="+cur_path);
+        if (r=="0"){
+            return;
+        }
+        json=JSON.parse(r);
+        dirs=json[0];
+        files=json[1];
+        content="";
+        c=0;
+        for (var i in dirs){
+          c=c+1;
+          d=dirs[i]
+          if (cur_path!=""){
+            path=cur_path+"/";
+          }else{
+            path="";
+          }
+          content+="<tr onclick='_chdir(\""+path+d+"\");'><td class='flame bold'>"+d+"</td><td></td><td></td></tr>";
+        }
+        for (var i in files){
+          c=c+1;
+          d=files[i]
+          if (cur_path!=""){
+            path=cur_path+"/";
+          }else{
+            path="";
+          }
+          content+="<tr><td class='ice bold'>"+d+"</td><td onclick='_getfile(\""+path+d+"\");'>Download</td><td onclick='_del(\""+path+d+"\")'>Delete</td></tr>";
+        }
+        fscont.innerHTML="<div class='infoline center'>Files</div>"+
+        "<div style='position:relative;height:75%' class='scroll'>"+
+        "<table class='tbm small black' style='margin-left:2%;width:95%'><tbody>"+
+        "<tr>"+
+        "<td onclick='_chdir(\"\");'>\\</td><td></td><td></td></tr>"+
+        "</tr>"+
+        content+"</tbody</table></div>";
+        fs.hidden=false;
+        btn.focus();
+    }
+</script>

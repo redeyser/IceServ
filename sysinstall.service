@@ -1,0 +1,19 @@
+[Unit]
+Description=dIceServ
+After=syslog.target
+After=network.target
+After=mysql.service
+Requires=mysql.service
+
+[Service]
+Type=forking
+WorkingDirectory=/home/beerpoint/demons/dIceServ
+
+User=beerpoint
+Group=beerpoint
+
+ExecStart=/bin/sh /home/beerpoint/demons/dIceServ/start.sh
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target 

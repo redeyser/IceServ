@@ -1,0 +1,66 @@
+<form  method='POST' action='/action'>
+    <input name="id" id="id" type="hidden" value="%id%"/>
+    <table class="marg norm">
+        <tbody>
+        <tr>
+            <input name="idreg" id="idreg" type="hidden" value="%idreg%"/>
+            <input name="daysweek" id="daysweek"  type="hidden" value="%daysweek%"/>
+            <input name="_if" id="_if"  type="hidden" value="%_if%"/>
+            <input name="_then" id="_then"  type="hidden" value="%_then%"/>
+            <td colspan=4 class="vcenter ice">Reg[%idreg%]:[%id%]
+            Name:
+                <input class="itext flame norm" name="name" id="name" value='%name%' type="text" size=20/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">dt1:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="dt1" id="dt1" value='%dt1%' type="text" size=8/>
+            </td>
+            <td class="vcenter ice norm">dt2:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="dt2" id="dt2" value='%dt2%' type="text" size=8/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">tm1:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="tm1" id="tm1" value='%tm1%' type="text" size=8/>
+            </td>
+            <td class="vcenter ice norm">tm2:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="tm2" id="tm2" value='%tm2%' type="text" size=8/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">daysweek</td>
+            <td colspan=2 id="daysw"></td>
+            <td>
+                Active
+                <select class="itext black small" name="isactive">
+                    <option value="0" %isactive_0%>Нет</option>
+                    <option value="1" %isactive_1%>Да</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <button class="but norm"  onclick="edtext('_if');pop.hidden=false;return false;" >IF</button>
+                <button class="but norm"  onclick="edtext('_then');pop.hidden=false;return false;" >THEN</button>
+                <button class="but norm" name="cancel" value="cancel" onclick="ed_x.hidden=true;return false;" >Cancel</button>
+            </td>
+            <td>
+                <button class="but norm" name="delete" value="delete" onclick="return confirm('Удалить?');" >Delete</button>
+            </td>
+            <td>
+                <button class="but norm" name="save" value="save" onclick="return confirm('Сохранить?');" >Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+    <div id="pop" class="windowinfo wcenter w80 h80" style="overflow:hidden;" hidden >
+       <textarea class='small black itext' id=text cols=60 rows=12></textarea><br>
+        <button class="but norm" name="cancel" value="cancel" onclick="pop.hidden=true;return false;" >Cancel</button>
+        <button class="but norm" name="cancel" value="cancel" onclick="savetext();pop.hidden=true;return false;" >Save</button>
+    </div>

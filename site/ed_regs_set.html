@@ -1,0 +1,33 @@
+<form  method='POST' action='/regs_set'>
+    <input name="id" id="id" type="hidden" value="%id%"/>
+    <table class="marg norm">
+        <tbody>
+        <tr>
+            <input name="idreg" id="idreg" type="hidden" value="%idreg%"/>
+            <td class="vcenter ice">Reg[%idreg%]:[%id%]</td><td></td>
+            <td class="vcenter ice">Name:</td>
+            <td class="vcenter">
+                <input class="itext flame norm" name="name" id="name" value='%name%' type="text" size=13/>
+            </td>
+        </tr>
+        <tr>
+            <td class="vcenter ice norm">Value:</td>
+            <td class="vcenter" colspan=3>
+                <input class="itext flame norm" name="value" id="value" value='%value%' type="text" size=30/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <button class="but norm" name="cancel" value="cancel" onclick="ed_x.hidden=true;return false;" >Cancel</button>
+            </td>
+            <td>
+                <button class="but norm" name="delete" value="delete" onclick="return confirm('Удалить?');" >Delete</button>
+            </td>
+            <td>
+                <button class="but norm" name="save" value="save" onclick="return confirm('Сохранить?');" >Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
